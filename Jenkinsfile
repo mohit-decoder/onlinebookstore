@@ -3,9 +3,7 @@ pipeline {
     stages{
         stage('gitCheckout'){
             steps{
-                scripts{
-                    git branch: 'master', url: 'https://github.com/mohit-decoder/onlinebookstore.git'
-                }
+               git credentialsId: 'mohitjen', url: 'https://github.com/mohit-decoder/onlinebookstore.git'
             }
         }
     }
