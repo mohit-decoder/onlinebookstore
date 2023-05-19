@@ -7,9 +7,8 @@ pipeline {
         choice(name: 'action', choices: 'create\delete', description: 'create/Destroy')
     }
     stages{
-
-        when { expression { param.action == 'create'}}
         stage('gitCheckout'){
+            when { expression { param.action == 'create'}}
             steps{
               script{
               gitCheckout(
