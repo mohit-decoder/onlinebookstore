@@ -6,10 +6,10 @@ pipeline {
         stage('gitCheckout'){
             steps{
               script{
-              gitCheckout{
-                    branch: "master",
-                    url: "https://github.com/mohit-decoder/onlinebookstore.git"
-                }
+              gitCheckout(
+                    branch:"master",
+                    url:"https://github.com/mohit-decoder/onlinebookstore.git"
+                )
               }
             }
         }
