@@ -18,7 +18,6 @@ pipeline {
               }
             }
         }
-       
         stage('Unit test Maven'){
             when { expression { params.action == 'create'}}
             steps{
@@ -36,12 +35,13 @@ pipeline {
               }
             }
         }
-        
         stage('Static code analysis: SonarQube'){
             when { expression { params.action == 'create'}}
             steps{
               script{
-                   staticCodeAnalysis()
+                //    staticCodeAnalysis()
+                    def SonarQubecredentialsId ='sonar'
+                    Staticcodeanalysis(SonarQubecredentialsId) 
               }
             }
         }
@@ -51,6 +51,14 @@ pipeline {
               script{
                    def SonarQubecredentialsId ='sonar'
                    QualityGateStatus(SonarQubecredentialsId) 
+              }
+            }
+        }
+        stage('Maven- Build'){
+            when { expression { params.action == 'create'}}
+            steps{
+              script{
+                    mvnBuild()
               }
             }
         }
