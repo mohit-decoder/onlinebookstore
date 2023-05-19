@@ -1,16 +1,27 @@
-@Library{'my-shared-library'}
+// @Library{'my-shared-library'}
+
+// pipeline {
+//     agent any
+//     stages{
+//         stage('gitCheckout'){
+//             steps{
+//               script{
+//                 gitCheckout{
+//                     branch: "master",
+//                     url: "https://github.com/mohit-decoder/onlinebookstore.git"
+//                 }
+//               }
+//             }
+//         }
+//     }
+// }
 
 pipeline {
     agent any
     stages{
         stage('gitCheckout'){
             steps{
-              script{
-                gitCheckout{
-                    branch: "master",
-                    url: "https://github.com/mohit-decoder/onlinebookstore.git"
-                }
-              }
+               git 'https://github.com/mohit-decoder/onlinebookstore.git'
             }
         }
     }
