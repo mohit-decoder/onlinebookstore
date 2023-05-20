@@ -73,6 +73,14 @@ pipeline {
               }
             }
         }
+        stage('Docker-Image_scan'){
+            when { expression { params.action == 'create'}}
+            steps{
+              script{
+                    dockerBuild("${params.ImageName}","${params.ImageTag}","${params.DockerHubUser}")
+              }
+            }
+        }
     }
 }
 
